@@ -7,6 +7,9 @@ async function bar(val: number): Promise<void>
 {
     try
     {
+        console.log(`Waiting ${val} seconds...`);
+        await new Promise(r => setTimeout(r, val * 1000));
+        console.log(`Waited ${val} seconds.`);
         const result = await foo(val);
         console.log('Result: ' + result);
     }
@@ -16,6 +19,6 @@ async function bar(val: number): Promise<void>
     }
 }
   
-bar(1).then(() => console.log('Done 1'));
+bar(3).then(() => console.log('Done 3'));
 bar(2).then(() => console.log('Done 2'));
   
